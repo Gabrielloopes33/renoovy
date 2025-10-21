@@ -177,7 +177,7 @@ export default function Home() {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-              className="relative h-96 md:h-[600px] flex items-center justify-center"
+              className="relative h-97 md:h-[600px] flex items-center justify-center"
             >
               {/* Background decorative elements */}
               <motion.div 

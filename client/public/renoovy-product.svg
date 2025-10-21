@@ -1,0 +1,52 @@
+<svg width="400" height="500" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f3e8ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e879f9;stop-opacity:0.8" />
+    </linearGradient>
+    <linearGradient id="bottle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#f8fafc;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="200" cy="250" r="180" fill="url(#bg)" opacity="0.3"/>
+  
+  <!-- Bottle shadow -->
+  <ellipse cx="205" cy="420" rx="45" ry="15" fill="#9333ea" opacity="0.2"/>
+  
+  <!-- Bottle body -->
+  <rect x="160" y="150" width="80" height="260" rx="25" fill="url(#bottle)" stroke="#9333ea" stroke-width="2"/>
+  
+  <!-- Bottle cap -->
+  <rect x="170" y="130" width="60" height="30" rx="10" fill="#9333ea"/>
+  <rect x="175" y="125" width="50" height="15" rx="7" fill="#7c3aed"/>
+  
+  <!-- Label -->
+  <rect x="170" y="200" width="60" height="80" rx="5" fill="#ffffff" stroke="#9333ea" stroke-width="1"/>
+  
+  <!-- Logo/Text on label -->
+  <text x="200" y="220" text-anchor="middle" fill="#9333ea" font-family="Arial, sans-serif" font-size="12" font-weight="bold">RENOOVY</text>
+  <text x="200" y="235" text-anchor="middle" fill="#9333ea" font-family="Arial, sans-serif" font-size="16" font-weight="bold">+</text>
+  <text x="200" y="250" text-anchor="middle" fill="#7c3aed" font-family="Arial, sans-serif" font-size="8">BEAUTY</text>
+  <text x="200" y="260" text-anchor="middle" fill="#7c3aed" font-family="Arial, sans-serif" font-size="8">FORMULA</text>
+  <text x="200" y="275" text-anchor="middle" fill="#6b21a8" font-family="Arial, sans-serif" font-size="7">60 cápsulas</text>
+  
+  <!-- Pills inside bottle (visible through transparent bottle) -->
+  <circle cx="185" cy="320" r="8" fill="#ec4899" opacity="0.7"/>
+  <circle cx="205" cy="340" r="8" fill="#f97316" opacity="0.7"/>
+  <circle cx="195" cy="360" r="8" fill="#ec4899" opacity="0.7"/>
+  <circle cx="215" cy="380" r="8" fill="#f97316" opacity="0.7"/>
+  <circle cx="180" cy="350" r="8" fill="#ec4899" opacity="0.7"/>
+  
+  <!-- Shine effect -->
+  <rect x="165" y="160" width="15" height="200" rx="7" fill="#ffffff" opacity="0.3"/>
+  
+  <!-- Stars/sparkles around -->
+  <text x="120" y="180" fill="#fbbf24" font-size="20">✨</text>
+  <text x="290" y="200" fill="#fbbf24" font-size="16">⭐</text>
+  <text x="130" y="350" fill="#fbbf24" font-size="14">💫</text>
+  <text x="280" y="320" fill="#fbbf24" font-size="18">✨</text>
+</svg>

@@ -2,13 +2,13 @@
 
 import { 
   Header,
-  HeroSection,
   TrustBadgesSection,
   BenefitsSection,
   PackagesSection,
   TestimonialsSection,
   FAQSection,
 } from '@/components/organisms';
+import { motion } from 'framer-motion';
 import { usePackages, useTestimonials, useFAQs, useBenefits } from '@/hooks';
 import { useCartStore } from '@/store';
 import { CONSTANTS } from '@/config';
@@ -94,15 +94,188 @@ export default function Home() {
       />
 
       {/* Hero Section */}
-      <HeroSection
-        title="Desperte Sua Melhor Versão"
-        subtitle="Rejuvenesça até 10 anos com a fórmula exclusiva Renoovy+. Pele radiante, cabelos fortes e unhas saudáveis em um único suplemento."
-        primaryCta="Comprar Agora"
-        secondaryCta="Saiba Mais"
-        features={['Aprovado ANVISA', '100% Natural']}
-        onPrimaryCta={handleCtaClick}
-        onSecondaryCta={() => document.getElementById('beneficios')?.scrollIntoView({ behavior: 'smooth' })}
-      />
+      <motion.section 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        className="relative overflow-hidden py-20 md:py-32"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-white to-purple-50"></div>
+        
+        <div className="relative container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="space-y-6"
+            >
+              <motion.h1 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight"
+              >
+                Desperte Sua Melhor Versão
+              </motion.h1>
+              
+              <motion.p 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+                className="text-xl text-gray-600 leading-relaxed"
+              >
+                Rejuvenesça até 10 anos com a fórmula exclusiva Renoovy+. Pele radiante, cabelos fortes e unhas saudáveis em um único suplemento.
+              </motion.p>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="flex gap-4 pt-4"
+              >
+                <motion.button 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={handleCtaClick}
+                  className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition"
+                >
+                  Comprar Agora
+                </motion.button>
+                <motion.button 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => document.getElementById('beneficios')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="border-2 border-purple-600 text-purple-600 hover:bg-purple-50 px-8 py-4 rounded-lg text-lg font-semibold transition"
+                >
+                  Saiba Mais
+                </motion.button>
+              </motion.div>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                className="flex gap-6 pt-4 text-sm text-gray-600"
+              >
+                {['Aprovado ANVISA', '100% Natural'].map((feature, idx) => (
+                  <motion.div 
+                    key={idx}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4, delay: 0.9 + idx * 0.1 }}
+                    className="flex items-center gap-2"
+                  >
+                    <span className="text-purple-600 text-lg">✓</span>
+                    <span className="font-medium">{feature}</span>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+              className="relative h-96 md:h-[600px] flex items-center justify-center"
+            >
+              {/* Background decorative elements */}
+              <motion.div 
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 0.1 }}
+                transition={{ duration: 1, delay: 0.5 }}
+                className="absolute inset-0 bg-gradient-to-br from-purple-200 to-purple-300 rounded-full"
+              />
+              
+              {/* Product Image */}
+              <motion.div 
+                initial={{ scale: 0.6, opacity: 0, rotate: -10 }}
+                whileInView={{ scale: 1, opacity: 1, rotate: 0 }}
+                transition={{ 
+                  duration: 0.8, 
+                  ease: "easeOut", 
+                  delay: 0.6,
+                  type: "spring",
+                  stiffness: 100
+                }}
+                whileHover={{ 
+                  scale: 1.05, 
+                  rotate: 2,
+                  transition: { duration: 0.3 }
+                }}
+                className="relative z-10 cursor-pointer"
+              >
+                <img 
+                  src="/frasco.png" 
+                  alt="Renoovy+ - Suplemento de Beleza" 
+                  className="w-80 h-auto drop-shadow-2xl"
+                  style={{ maxWidth: '320px', height: 'auto' }}
+                  loading="eager"
+                  onLoad={() => console.log('Image loaded successfully!')}
+                  onError={(e) => {
+                    console.error('Error loading image:', e);
+                    console.log('Trying to load image again...');
+                  }}
+                />
+              </motion.div>
+              
+              {/* Floating elements */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: 0.6 }}
+                animate={{ 
+                  y: [0, -10, 0],
+                  transition: {
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }
+                }}
+                className="absolute top-16 right-16 text-4xl"
+              >
+                ✨
+              </motion.div>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.2, duration: 0.6 }}
+                animate={{ 
+                  y: [0, -15, 0],
+                  transition: {
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1
+                  }
+                }}
+                className="absolute bottom-20 left-8 text-3xl"
+              >
+                💫
+              </motion.div>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.4, duration: 0.6 }}
+                animate={{ 
+                  y: [0, -8, 0],
+                  transition: {
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.5
+                  }
+                }}
+                className="absolute top-32 left-12 text-2xl"
+              >
+                ⭐
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
 
       {/* Trust Badges */}
       <TrustBadgesSection badges={trustBadges} />

@@ -91,6 +91,14 @@ export default function Home() {
                  section === 'depoimentos' ? 'Depoimentos' : 'FAQ'}
               </motion.a>
             ))}
+            <motion.a
+              variants={fadeInUp}
+              whileHover={{ scale: 1.05, color: "#9333ea" }}
+              href="/form"
+              className="text-purple-600 hover:text-purple-800 font-semibold transition"
+            >
+              📋 PDF Grátis
+            </motion.a>
           </motion.nav>
           
           <motion.button 
@@ -872,16 +880,32 @@ export default function Home() {
           >
             Junte-se a milhares de mulheres que já estão desfrutando dos benefícios de Renoovy+
           </motion.p>
-          <motion.button 
-            variants={scaleIn}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            onClick={scrollToOffers}
-            className="bg-white text-purple-600 hover:bg-purple-50 px-10 py-6 text-lg font-bold rounded-lg transition"
+          <motion.div
+            variants={fadeInUp}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            Comprar Agora com Desconto
-          </motion.button>
+            <motion.button 
+              variants={scaleIn}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              onClick={scrollToOffers}
+              className="bg-white text-purple-600 hover:bg-purple-50 px-10 py-6 text-lg font-bold rounded-lg transition"
+            >
+              Comprar Agora com Desconto
+            </motion.button>
+            
+            <motion.a
+              href="/form"
+              variants={scaleIn}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="border-2 border-white text-white hover:bg-white hover:text-purple-600 px-10 py-6 text-lg font-bold rounded-lg transition inline-block"
+            >
+              📋 Guia Gratuito PDF
+            </motion.a>
+          </motion.div>
         </div>
       </motion.section>
 

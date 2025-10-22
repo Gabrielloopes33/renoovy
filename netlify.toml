@@ -1,6 +1,14 @@
 [build]
-  command = "npm run build"
-  publish = "dist"
+  command = "pnpm install && pnpm run build"
+  publish = "dist/public"
+
+[functions]
+  directory = "dist"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/index/:splat"
+  status = 200
 
 [[redirects]]
   from = "/*"

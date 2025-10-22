@@ -36,6 +36,25 @@ const scaleIn = {
 };
 
 export default function Home() {
+  // Function to scroll to offers section
+  const scrollToOffers = () => {
+    document.getElementById('ofertas')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  // Function to handle package selection with different URLs
+  const handlePackageSelect = (packageId: string) => {
+    const packageUrls: Record<string, string> = {
+      '1': 'https://pay.kiwify.com.br/1-frasco-renoovy', // 1 frasco
+      '2': 'https://pay.kiwify.com.br/3-frascos-renoovy', // 3 frascos
+      '3': 'https://pay.kiwify.com.br/5-frascos-renoovy', // 5 frascos
+    };
+    
+    const url = packageUrls[packageId];
+    if (url) {
+      window.open(url, '_blank');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -79,6 +98,7 @@ export default function Home() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.8 }}
+            onClick={scrollToOffers}
             className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg font-semibold transition"
           >
             Comprar Agora
@@ -126,6 +146,7 @@ export default function Home() {
                   variants={scaleIn}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={scrollToOffers}
                   className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition"
                 >
                   Comprar Agora
@@ -134,6 +155,7 @@ export default function Home() {
                   variants={scaleIn}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => document.getElementById('beneficios')?.scrollIntoView({ behavior: 'smooth' })}
                   className="border-2 border-purple-600 text-purple-600 hover:bg-purple-50 px-8 py-4 rounded-lg text-lg font-semibold transition"
                 >
                   Saiba Mais
@@ -593,6 +615,7 @@ export default function Home() {
                 <motion.button 
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  onClick={() => handlePackageSelect(pkg.id)}
                   className={`w-full py-4 rounded-lg font-bold transition ${
                     pkg.popular
                       ? 'bg-white text-purple-600 hover:bg-purple-50'

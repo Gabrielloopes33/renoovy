@@ -44,9 +44,9 @@ export default function Home() {
   // Function to handle package selection with different URLs
   const handlePackageSelect = (packageId: string) => {
     const packageUrls: Record<string, string> = {
-      '1': 'https://pay.kiwify.com.br/1-frasco-renoovy', // 1 frasco
-      '2': 'https://pay.kiwify.com.br/3-frascos-renoovy', // 3 frascos
-      '3': 'https://pay.kiwify.com.br/5-frascos-renoovy', // 5 frascos
+      '1': 'https://app.monetizze.com.br/checkout/KRA254164', // 1 frasco
+      '2': 'https://app.monetizze.com.br/checkout/KWS254165', // 3 frascos
+      '3': 'https://app.monetizze.com.br/checkout/KWS254166', // 5 frascos
     };
     
     const url = packageUrls[packageId];
@@ -877,6 +877,7 @@ export default function Home() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.6, delay: 0.4 }}
+            onClick={scrollToOffers}
             className="bg-white text-purple-600 hover:bg-purple-50 px-10 py-6 text-lg font-bold rounded-lg transition"
           >
             Comprar Agora com Desconto

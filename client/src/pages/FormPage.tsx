@@ -126,7 +126,7 @@ export default function FormPage() {
 
     try {
       // trocar pelo webhook
-      const response = await fetch('https://flow.agenciatouch.com.br/webhook-test/068f42dd-3f61-48e0-97d7-b4130d61e123', {
+      const response = await fetch('https://flow.agenciatouch.com.br/webhook/068f42dd-3f61-48e0-97d7-b4130d61e123', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -136,7 +136,7 @@ export default function FormPage() {
           phone: formData.phone.replace(/\D/g, ''), // Send only numbers
           email: formData.email.trim(),
           timestamp: new Date().toISOString(),
-          source: 'renoovy-website'
+          source: 'isca-digital-receitas'
         })
       });
 

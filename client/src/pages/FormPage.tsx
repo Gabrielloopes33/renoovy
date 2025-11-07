@@ -99,14 +99,14 @@ export default function FormPage() {
       formattedValue = formatPhone(value);
     }
 
-    setFormData(prev => ({
+    setFormData((prev: FormData) => ({
       ...prev,
       [field]: formattedValue
     }));
 
     // Clear error when user starts typing
     if (errors[field]) {
-      setErrors(prev => ({
+      setErrors((prev: FormErrors) => ({
         ...prev,
         [field]: undefined
       }));
@@ -142,8 +142,6 @@ export default function FormPage() {
 
       if (response.ok) {
         setIsSuccess(true);
-        // Reset form
-        setFormData({ name: '', phone: '', email: '' });
       } else {
         throw new Error('Erro ao enviar formulário');
       }
@@ -303,7 +301,7 @@ export default function FormPage() {
                     <input
                       type="text"
                       value={formData.name}
-                      onChange={(e) => handleInputChange('name', e.target.value)}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('name', e.target.value)}
                       className={`w-full pl-12 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition ${
                         errors.name ? 'border-red-500' : 'border-gray-300'
                       }`}
@@ -328,7 +326,7 @@ export default function FormPage() {
                     <input
                       type="tel"
                       value={formData.phone}
-                      onChange={(e) => handleInputChange('phone', e.target.value)}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('phone', e.target.value)}
                       className={`w-full pl-12 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition ${
                         errors.phone ? 'border-red-500' : 'border-gray-300'
                       }`}
@@ -356,7 +354,7 @@ export default function FormPage() {
                     <input
                       type="email"
                       value={formData.email}
-                      onChange={(e) => handleInputChange('email', e.target.value)}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('email', e.target.value)}
                       className={`w-full pl-12 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition ${
                         errors.email ? 'border-red-500' : 'border-gray-300'
                       }`}

@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Download, CheckCircle, AlertCircle, Phone, Mail, User, FileText } from 'lucide-react';
-import { Link } from 'wouter';
+import { ArrowLeft, Download, AlertCircle, Phone, Mail, User, FileText } from 'lucide-react';
+import { Link, useLocation } from 'wouter';
 
 // Animation variants
 const fadeInUp = {
@@ -45,6 +45,8 @@ interface FormErrors {
 }
 
 export default function FormPage() {
+  const [, navigate] = useLocation();
+  
   const [formData, setFormData] = useState<FormData>({
     name: '',
     phone: '',
@@ -53,7 +55,6 @@ export default function FormPage() {
   
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   // Validate form
@@ -141,7 +142,11 @@ export default function FormPage() {
       });
 
       if (response.ok) {
-        setIsSuccess(true);
+        // Salvar telefone no localStorage para a página de obrigado
+        localStorage.setItem('formPhone', formData.phone);
+        
+        // Redirecionar para página de obrigado
+        navigate(`/obrigado?phone=${encodeURIComponent(formData.phone)}`);
       } else {
         throw new Error('Erro ao enviar formulário');
       }
@@ -152,71 +157,6 @@ export default function FormPage() {
       setIsSubmitting(false);
     }
   };
-
-  if (isSuccess) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-100 flex items-center justify-center px-4">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={staggerContainer}
-          className="max-w-md w-full"
-        >
-          <motion.div
-            variants={scaleIn}
-            className="bg-white rounded-2xl shadow-2xl p-8 text-center"
-          >
-            <motion.div
-              variants={scaleIn}
-              className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"
-            >
-              <CheckCircle className="w-10 h-10 text-green-600" />
-            </motion.div>
-            
-            <motion.h1
-              variants={fadeInUp}
-              className="text-2xl font-bold text-gray-900 mb-4"
-            >
-              Formulário Enviado!
-            </motion.h1>
-            
-            <motion.p
-              variants={fadeInUp}
-              className="text-gray-600 mb-6 leading-relaxed"
-            >
-              Obrigado! Seu PDF será enviado via WhatsApp nos próximos minutos.
-              Verifique suas mensagens!
-            </motion.p>
-            
-            <motion.div
-              variants={staggerContainer}
-              className="space-y-4"
-            >
-              <motion.div
-                variants={fadeInUp}
-                className="flex items-center gap-3 text-sm text-gray-600 bg-purple-50 p-3 rounded-lg"
-              >
-                <Phone className="w-4 h-4 text-purple-600" />
-                <span>WhatsApp: {formData.phone}</span>
-              </motion.div>
-              
-              <Link href="/">
-                <motion.button
-                  variants={scaleIn}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition flex items-center justify-center gap-2"
-                >
-                  <ArrowLeft className="w-4 h-4" />
-                  Voltar ao Site
-                </motion.button>
-              </Link>
-            </motion.div>
-          </motion.div>
-        </motion.div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-100">

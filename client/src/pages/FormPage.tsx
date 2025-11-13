@@ -207,10 +207,10 @@ export default function FormPage() {
               </motion.div>
               
               <h1 className="text-3xl font-bold mb-2">
-                Guia Gratuito de Beleza
+                Receitas de alimentos Anti-inflamatórios e Antioxidantes
               </h1>
               <p className="text-purple-100 text-lg">
-                Descubra os segredos para uma pele radiante aos 40+
+                Receitas que cuidam de você de dentro para fora.
               </p>
             </motion.div>
 

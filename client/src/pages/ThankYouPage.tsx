@@ -51,7 +51,7 @@ export default function ThankYouPage() {
       // Aguardar carregamento do script
       script.onload = () => {
         if ((window as any).fbq) {
-          (window as any).fbq('init', '891374271470274');
+          (window as any).fbq('init', '678794644544015');
           (window as any).fbq('track', 'PageView');
         }
       };
@@ -60,14 +60,14 @@ export default function ThankYouPage() {
       if (document.readyState === 'complete') {
         setTimeout(() => {
           if ((window as any).fbq && typeof (window as any).fbq === 'function') {
-            (window as any).fbq('init', '891374271470274');
+            (window as any).fbq('init', '678794644544015');
             (window as any).fbq('track', 'PageView');
           }
         }, 100);
       }
     } else {
       // Se o fbq já existe, apenas inicializar
-      (window as any).fbq('init', '891374271470274');
+      (window as any).fbq('init', '678794644544015');
       (window as any).fbq('track', 'PageView');
     }
 
@@ -90,7 +90,7 @@ export default function ThankYouPage() {
     noscriptImg.height = 1;
     noscriptImg.width = 1;
     noscriptImg.style.display = 'none';
-    noscriptImg.src = 'https://www.facebook.com/tr?id=891374271470274&ev=PageView&noscript=1';
+    noscriptImg.src = 'https://www.facebook.com/tr?id=678794644544015&ev=PageView&noscript=1';
     document.body.appendChild(noscriptImg);
 
     // Limpar dados do localStorage após uso
